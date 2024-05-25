@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        height: 99vh;
+        background-color: rgb(235, 232, 232);
+    }
+    #hi{
+        border: 1px solid;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0px 0px 20px 1px;
+        background-color: hwb(198 75% 0%); 
+    }
+    h2{
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin-top: -20px;
+    }
+    button{
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        border: 1px solid black;
+        border-radius: 3px;
+        width: 65px;
+        height: 22px;
+        cursor: pointer;
+        font-family:'Helvetica Neue', sans-serif;
+
+    }
+    button:active{
+        scale: 0.9;
+        transition: all ease 0.2s;
+    }
+</style>
+</head>
+<body>
+<div id="hi">
+    <div style="display: flex;gap: 10px;display: flex;align-items: baseline;">
+        <h2 style="font-size: 45px;">00</h2>
+        <h2 style="font-size: 45px;">00</h2>
+        <h2 style="font-size: 45px;">00</h2>
+        <h2 style="font-size: 20px;">00</h2>
+    </div>
+    <div style="display: flex;gap: 15px;">
+        <button onclick="start()">START</button>
+        <button onclick="ret()">STOP</button>
+        <button onclick="reset()">RESET</button>
+
+    </div>
+</div>
+<script>
+    let hours=document.getElementsByTagName("h2")[0];
+    let min=document.getElementsByTagName("h2")[1];
+    let sec=document.getElementsByTagName("h2")[2];
+    let millisec=document.getElementsByTagName("h2")[3];
+     i=1;
+     j=1;
+     k=1;
+     l=1;
+
+     let reset=()=>{
+        ret()
+        millisec.innerHTML="00";
+        sec.innerHTML="00";
+        min.innerHTML="00";
+        hours.innerHTML="00";
+        i=0,j=0,k=0,l=0;
+    }
+
+    let start=()=>{
+         m=setInterval(() => {
+        if(i==1000){
+            i=0
+        }
+        millisec.innerHTML=": "+i+"s"
+        i++
+    
+    },);
+        n=setInterval(() => {
+        if(j==60){
+            j=0
+        }
+        sec.innerHTML=": "+j
+        j++
+    
+    },1000);
+
+    s=setInterval(() => {
+        if(k==60){
+            k=0
+        }
+        min.innerHTML=": "+k
+        k++
+    
+    }, 60000);
+
+    v=setInterval(() => {
+        if(l==24){
+            l=0
+        }
+        hours.innerHTML=": "+l
+        l++
+    
+    }, 600000);
+    }
+    let ret=()=>{
+    clearInterval(m)
+    clearInterval(n)
+    clearInterval(s)
+    clearInterval(v)
+    }
+</script>
+</body>
+</html>
